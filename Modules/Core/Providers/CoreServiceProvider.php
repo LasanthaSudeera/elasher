@@ -4,6 +4,7 @@ namespace Modules\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Core\Console\GenerateEncryptionKeys;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -38,6 +39,9 @@ class CoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->commands([
+            GenerateEncryptionKeys::class
+        ]);
     }
 
     /**
