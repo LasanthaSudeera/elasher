@@ -86,7 +86,7 @@ class GenerateEncryptionKeys extends Command
                     $newEnv = preg_replace("/$key=(.*)\n/", "$key=$value\n", $newEnv);
                 } else {
                     $this->error('Keys already exists, interrupter by user!');
-                    break;
+                    return;
                 }
             } else {
                 // Check if spacing is correct
