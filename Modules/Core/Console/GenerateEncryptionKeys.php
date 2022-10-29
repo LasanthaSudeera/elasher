@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Console;
 
+use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -56,7 +57,6 @@ class GenerateEncryptionKeys extends Command
 
             $this->saveArrayToEnv($keyPairs);
 
-            $this->info('The keys was generated successfully!');
         }
 
 
@@ -82,7 +82,12 @@ class GenerateEncryptionKeys extends Command
 
             if (str_contains($newEnv, "$key=")) {
                 // If key exists, replace value
-                $newEnv = preg_replace("/$key=(.*)\n/", "$key=$value\n", $newEnv);
+                if ($this->confirm("{$key} is not empty! Are you sure you want to replace? You cannot go back!")) {
+                    $newEnv = preg_replace("/$key=(.*)\n/", "$key=$value\n", $newEnv);
+                } else {
+                    $this->error('Keys already exists, interrupter by user!');
+                    break;
+                }
             } else {
                 // Check if spacing is correct
                 if (!str_ends_with($newEnv, "\n\n") && !$newlyInserted) {
@@ -97,5 +102,8 @@ class GenerateEncryptionKeys extends Command
         $fp = fopen($envFile, 'w');
         fwrite($fp, $newEnv);
         fclose($fp);
+
+        $this->info('The keys was generated successfully!');
+
     }
 }
