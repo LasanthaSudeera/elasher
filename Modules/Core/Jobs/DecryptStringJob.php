@@ -7,7 +7,7 @@ use Lucid\Units\Job;
 class DecryptStringJob extends Job
 {
     /**
-     * Unencrypted String
+     * Encrypted String
      *
      * @var string
      */
