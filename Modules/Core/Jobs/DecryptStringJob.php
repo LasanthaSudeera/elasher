@@ -4,7 +4,7 @@ namespace Modules\Core\Jobs;
 
 use Lucid\Units\Job;
 
-class EncryptStringJob extends Job
+class DecryptStringJob extends Job
 {
     /**
      * Unencrypted String
