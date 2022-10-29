@@ -85,7 +85,7 @@ class GenerateEncryptionKeys extends Command
                 if ($this->confirm("{$key} is not empty! Are you sure you want to replace? You cannot go back!")) {
                     $newEnv = preg_replace("/$key=(.*)\n/", "$key=$value\n", $newEnv);
                 } else {
-                    $this->error('Keys already exists, interrupter by user!');
+                    $this->error('Keys already exists, interrupted by user!');
                     return;
                 }
             } else {
