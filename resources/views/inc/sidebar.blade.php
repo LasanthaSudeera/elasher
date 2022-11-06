@@ -4,7 +4,7 @@
             <a href="index.html">Elasher</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">St</a>
+            <a href="index.html">EL</a>
         </div>
         <ul class="sidebar-menu">
 
@@ -41,10 +41,10 @@
 
         </ul>
 
-        <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+        {{-- <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
             <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
                 <i class="fas fa-rocket"></i> Documentation
             </a>
-        </div>
+        </div> --}}
     </aside>
 </div>
