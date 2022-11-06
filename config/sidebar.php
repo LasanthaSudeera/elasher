@@ -13,21 +13,7 @@ return [
                     ],
                     [
                         'name' => 'E-Commerce Dashboard',
-                        'url' => 'home'
-                    ]
-                ]
-            ],
-            [
-                'name' => 'Testing Dashboard',
-                'icon_class' => 'fas fa-fire',
-                'submenu' => [
-                    [
-                        'name' => 'General Dashboard',
-                        'url' => 'home'
-                    ],
-                    [
-                        'name' => 'E-Commerce Dashboard',
-                        'url' => 'home'
+                        'url' => 'core.index'
                     ]
                 ]
             ],
