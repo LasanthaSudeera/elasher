@@ -1,10 +1,10 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">Elasher</a>
+            <a href="{{route('home')}}">Elasher</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">EL</a>
+            <a href="{{route('home')}}">EL</a>
         </div>
         <ul class="sidebar-menu">
 
