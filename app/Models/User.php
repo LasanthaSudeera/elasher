@@ -22,7 +22,8 @@ class User extends Authenticatable
         'password',
         'first_name',
         'last_name',
-        'username'
+        'username',
+        'password'
     ];
 
     /**
@@ -43,4 +44,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Mutator to bcrypt the password by default
+     *
+     * @param [string] $password
+     * @return void
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
 }
