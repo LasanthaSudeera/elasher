@@ -1,4 +1,8 @@
 <?php
+
+use App\Http\Controllers\HomeController;
+use Modules\Core\Http\Controllers\CoreController;
+
 return [
     [
         'menu_header' => 'Testing Dashboard',
@@ -9,18 +13,21 @@ return [
                 'submenu' => [
                     [
                         'name' => 'General Dashboard',
-                        'url' => 'home'
+                        'url' => 'home',
+                        'action' => [HomeController::class, 'index']
                     ],
                     [
                         'name' => 'E-Commerce Dashboard',
-                        'url' => 'core.index'
+                        'url' => 'core.index',
+                        'action' => [CoreController::class, 'index']
                     ]
                 ]
             ],
             [
                 'name' => 'Testing Blank Page',
                 'icon_class' => 'far fa-square',
-                'url' => 'home'
+                'url' => 'home',
+                'action' => [HomeController::class, 'index']
             ]
         ]
     ],
@@ -30,8 +37,16 @@ return [
             [
                 'name' => 'Testing Blank Page',
                 'icon_class' => 'far fa-square',
-                'url' => 'home'
+                'url' => 'home',
+                'action' => [HomeController::class, 'index']
+            ],
+            [
+                'name' => 'Core Testing Page',
+                'icon_class' => 'fas fa-fire',
+                'url' => 'core.index',
+                'action' => [CoreController::class, 'index']
             ]
+
         ]
     ]
 ];

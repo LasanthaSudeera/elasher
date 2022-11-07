@@ -1,10 +1,10 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{route('home')}}">Elasher</a>
+            <a href="{{ route('home') }}">Elasher</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{route('home')}}">EL</a>
+            <a href="{{ route('home') }}">EL</a>
         </div>
         <ul class="sidebar-menu">
 
@@ -15,7 +15,10 @@
                 <li class="menu-header">{{ $element['menu_header'] }}</li>
                 @foreach ($element['menu'] as $menu)
                     @if (array_key_exists('url', $menu))
-                        <li class="dropdown">
+                        <li
+                            class="dropdown
+                        {{ Route::getCurrentRoute()->getActionName() == $menu['action'][0] . '@' . $menu['action'][1] ? 'active' : '' }}
+                        ">
                             <a href="{{ route($menu['url']) }}" class="nav-link"><i
                                     class="{{ $menu['icon_class'] }}"></i><span>{{ $menu['name'] }}</span></a>
                         </li>
