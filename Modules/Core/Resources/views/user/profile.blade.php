@@ -1,7 +1,8 @@
 @extends('core::layouts.master')
 
 @section('content')
-    <h2 class="section-title">Hi, {{ auth()->user()->first_name }}!</h2>
+    <h2 class="section-title">
+        Hi, {{ auth()->user()->first_name }}!</h2>
     <p class="section-lead">
         Change information about yourself on this page.
     </p>
@@ -10,7 +11,9 @@
         <div class="col-12 col-md-12 col-lg-5">
             <div class="card profile-widget">
                 <div class="profile-widget-header">
-                    <img alt="image" src="{{ Avatar::create(auth()->user()->first_name . ' ' . auth()->user()->last_name)->toBase64() }}"  class="rounded-circle profile-widget-picture">
+                    <img alt="image"
+                        src="{{ Avatar::create(auth()->user()->first_name . ' ' . auth()->user()->last_name)->toBase64() }}"
+                        class="rounded-circle profile-widget-picture">
                     <div class="profile-widget-items">
                         <div class="profile-widget-item">
                             <div class="profile-widget-item-label">Servers</div>
@@ -38,7 +41,10 @@
         </div>
         <div class="col-12 col-md-12 col-lg-7">
             <div class="card">
-                <form method="post" class="needs-validation" novalidate="">
+                <form method="post" action="{{ route('user.update', auth()->user()->id) }}" class="needs-validation"
+                    novalidate="">
+                    @csrf
+                    @method('PATCH')
                     <div class="card-header">
                         <h4>Edit Profile</h4>
                     </div>
@@ -49,18 +55,22 @@
                                 <input id="first_name" name="first_name" type="text" class="form-control"
                                     value="{{ old('first_name') ? old('first_name') : auth()->user()->first_name }}"
                                     required="true">
-                                <div class="invalid-feedback">
-                                    Please fill in the first name
-                                </div>
+                                @error('first_name')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <div class="form-group col-md-6 col-12">
                                 <label>Last Name</label>
                                 <input id="last_name" name="last_name" type="text" class="form-control"
                                     value="{{ old('last_name') ? old('last_name') : auth()->user()->last_name }}">
-                                <div class="invalid-feedback">
-                                    Please fill in the last name
-                                </div>
+                                @error('last_name')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -69,9 +79,11 @@
                                 <label>Username</label>
                                 <input id="username" name="username" type="text" class="form-control"
                                     value="{{ old('username') ? old('username') : auth()->user()->username }}">
-                                <div class="invalid-feedback">
-                                    Please fill in the username
-                                </div>
+                                @error('username')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
@@ -79,27 +91,40 @@
                                 <label>Email</label>
                                 <input id="email" name="email" type="text" class="form-control"
                                     value="{{ old('email') ? old('email') : auth()->user()->email }}">
-                                <div class="invalid-feedback">
-                                    Please fill in the email
-                                </div>
+                                @error('email')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="form-group col-md-5 col-12">
                                 <label>New Password</label>
-                                <input type="tel" class="form-control" value="">
+                                <input name="password" type="password" class="form-control" value="">
+                                @error('password')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group col-md-5 col-12">
                                 <label>Confirm Password</label>
-                                <input type="tel" class="form-control" value="">
+                                <input name="password_confirmation" type="password" class="form-control" value="">
+
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group col-md-5 col-12">
                                 <label>Old Password</label>
-                                <input type="tel" class="form-control" value="">
+                                <input name="old_password" type="password" class="form-control" value="">
+                                @error('old_password')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

@@ -2,9 +2,10 @@
 
 namespace Modules\Core\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use Lucid\Units\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Illuminate\Contracts\Support\Renderable;
+use Modules\Core\Features\UpdateUserFeature;
 
 class UserController extends Controller
 {
@@ -62,9 +63,9 @@ class UserController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $this->serve(UpdateUserFeature::class, ['id' => $id]);
     }
 
     /**
