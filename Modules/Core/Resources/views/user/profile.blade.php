@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="my-3">
-                        <b>System Time: </b> {{ \Carbon\Carbon::now()->format('H:m') }} <br>
+                        <b>System Time: </b> {{ \Carbon\Carbon::now()->format('H:i:s') }} <br>
                         <b>System Date: </b> {{ \Carbon\Carbon::now()->isoFormat('MMMM Do YYYY') }} <br>
                         <b>System Time Zone: </b> {{ \Carbon\Carbon::now()->format('e') }}
                     </div>
