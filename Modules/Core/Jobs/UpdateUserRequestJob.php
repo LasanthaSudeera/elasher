@@ -38,6 +38,9 @@ class UpdateUserRequestJob extends Job
     public function handle()
     {
         $user = User::findOrFail($this->userId);
+        if ($this->input['password'] == null) {
+            unset($this->input['password']);
+        }
         $user->update($this->input);
         return $user;
     }
