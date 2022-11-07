@@ -1,9 +1,5 @@
 @extends('core::layouts.master')
 
 @section('content')
-    <h1>Hello World</h1>
-
-    <p>
-        This view is loaded from module: {!! config('core.name') !!}
-    </p>
+<h1>{{ Route::getCurrentRoute()->getActionName() }}</h1>
 @endsection
