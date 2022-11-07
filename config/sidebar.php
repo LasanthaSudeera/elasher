@@ -22,12 +22,6 @@ return [
                         'action' => [CoreController::class, 'index']
                     ]
                 ]
-            ],
-            [
-                'name' => 'Testing Blank Page',
-                'icon_class' => 'far fa-square',
-                'url' => 'home',
-                'action' => [HomeController::class, 'index']
             ]
         ]
     ],

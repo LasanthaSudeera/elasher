@@ -7,31 +7,38 @@
             <a href="{{ route('home') }}">EL</a>
         </div>
         <ul class="sidebar-menu">
-
-            <li class=active><a class="nav-link" href="blank.html"><i class="far fa-square"></i>
-                    <span>Blank Page</span></a></li>
-
+            @php
+                $currentRoute = Route::getCurrentRoute()->getActionName();
+            @endphp
             @foreach (config('sidebar') as $element)
                 <li class="menu-header">{{ $element['menu_header'] }}</li>
                 @foreach ($element['menu'] as $menu)
                     @if (array_key_exists('url', $menu))
                         <li
                             class="dropdown
-                        {{ Route::getCurrentRoute()->getActionName() == $menu['action'][0] . '@' . $menu['action'][1] ? 'active' : '' }}
+                        {{ $currentRoute == $menu['action'][0] . '@' . $menu['action'][1] ? 'active' : '' }}
                         ">
                             <a href="{{ route($menu['url']) }}" class="nav-link"><i
                                     class="{{ $menu['icon_class'] }}"></i><span>{{ $menu['name'] }}</span></a>
                         </li>
                     @else
                         <li class="dropdown">
+                            @php
+                                function hasRouteAction($array)
+                                {
+                                }
+                            @endphp
                             <a style="cursor: pointer;"
                                 class="nav-link {{ array_key_exists('submenu', $menu) ? 'has-dropdown' : '' }}"><i
                                     class="{{ $menu['icon_class'] }}"></i><span>{{ $menu['name'] }}</span></a>
                             @if (array_key_exists('submenu', $menu))
                                 <ul class="dropdown-menu">
                                     @foreach ($menu['submenu'] as $submenu)
-                                        <li><a class="nav-link"
-                                                href="{{ route($submenu['url']) }}">{{ $submenu['name'] }}</a></li>
+                                        <li
+                                            class="{{ $currentRoute == $submenu['action'][0] . '@' . $submenu['action'][1] ? 'active' : '' }}">
+                                            <a class="nav-link"
+                                                href="{{ route($submenu['url']) }}">{{ $submenu['name'] }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             @endif
