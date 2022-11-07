@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
+        "laravolt/avatar": "^4.1",
         "lucidarch/lucid": "^1.0",
         "nwidart/laravel-modules": "^9.0"
     },
