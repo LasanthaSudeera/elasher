@@ -41,9 +41,9 @@ class CoreController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show()
     {
-        return view('core::show');
+        return view('core::index');
     }
 
     /**

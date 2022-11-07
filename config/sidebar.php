@@ -39,6 +39,12 @@ return [
                 'icon_class' => 'fas fa-fire',
                 'url' => 'core.index',
                 'action' => [CoreController::class, 'index']
+            ],
+            [
+                'name' => 'Core Testing Show',
+                'icon_class' => 'fas fa-fire',
+                'url' => 'core.show',
+                'action' => [CoreController::class, 'show']
             ]
 
         ]

@@ -13,4 +13,5 @@
 
 Route::prefix('core')->group(function() {
     Route::get('/', 'CoreController@index')->name('core.index');
+    Route::get('/show', 'CoreController@show')->name('core.show');
 });
