@@ -5,8 +5,9 @@ namespace Modules\Core\Http\Controllers;
 use Lucid\Units\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Support\Renderable;
+use Modules\Core\Features\UpdateUserFeature;
 
-class CoreController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,14 +15,7 @@ class CoreController extends Controller
      */
     public function index()
     {
-        $breadCrumbs = [
-            'Home' => route('home'),
-            'Test' => null
-        ];
-        return view('core::index')->with([
-            'pageName' => 'Core Index',
-            'breadcrumbs' => $breadCrumbs
-        ]);
+        return view('core::index');
     }
 
     /**
@@ -48,16 +42,9 @@ class CoreController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show()
+    public function show($id)
     {
-        $breadCrumbs = [
-            'Home' => route('home'),
-            'Test' => null
-        ];
-        return view('core::index')->with([
-            'pageName' => 'Core Show',
-            'breadcrumbs' => $breadCrumbs
-        ]);
+        return view('core::show');
     }
 
     /**
@@ -76,9 +63,9 @@ class CoreController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        return $this->serve(UpdateUserFeature::class, ['id' => $id]);
     }
 
     /**
@@ -89,5 +76,17 @@ class CoreController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function myProfile()
+    {
+        $pageName = 'My Profile';
+        $breadcrumbs = [
+            'My Profile' => null
+        ];
+        return view('core::user.profile')->with([
+            'pageName' => $pageName,
+            'breadcrumbs' => $breadcrumbs
+        ]);
     }
 }
