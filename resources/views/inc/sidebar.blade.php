@@ -22,12 +22,18 @@
                                     class="{{ $menu['icon_class'] }}"></i><span>{{ $menu['name'] }}</span></a>
                         </li>
                     @else
-                        <li class="dropdown">
-                            @php
-                                function hasRouteAction($array)
-                                {
+                        @php
+                            function hasRouteActionInSubMenu($array)
+                            {
+                                $menuArray = [];
+                                foreach ($array['submenu'] as $element) {
+                                    $menuArray[] = $element['action'][0] . '@' . $element['action'][1];
                                 }
-                            @endphp
+
+                                return in_array(Route::getCurrentRoute()->getActionName(), $menuArray);
+                            }
+                        @endphp
+                        <li class="dropdown {{ hasRouteActionInSubMenu($menu) ? 'active' : '' }}">
                             <a style="cursor: pointer;"
                                 class="nav-link {{ array_key_exists('submenu', $menu) ? 'has-dropdown' : '' }}"><i
                                     class="{{ $menu['icon_class'] }}"></i><span>{{ $menu['name'] }}</span></a>
