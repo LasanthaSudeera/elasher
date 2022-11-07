@@ -14,7 +14,14 @@ class CoreController extends Controller
      */
     public function index()
     {
-        return view('core::index');
+        $breadCrumbs = [
+            'Home' => route('home'),
+            'Test' => null
+        ];
+        return view('core::index')->with([
+            'pageName' => 'Core Index',
+            'breadcrumbs' => $breadCrumbs
+        ]);
     }
 
     /**
@@ -43,7 +50,14 @@ class CoreController extends Controller
      */
     public function show()
     {
-        return view('core::index');
+        $breadCrumbs = [
+            'Home' => route('home'),
+            'Test' => null
+        ];
+        return view('core::index')->with([
+            'pageName' => 'Core Show',
+            'breadcrumbs' => $breadCrumbs
+        ]);
     }
 
     /**

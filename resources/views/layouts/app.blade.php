@@ -29,11 +29,12 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Page Name</h1>
+                        <h1>{{ $pageName }}</h1>
                         <div class="section-header-breadcrumb">
-                            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                            <div class="breadcrumb-item"><a href="#">Bootstrap Components</a></div>
-                            <div class="breadcrumb-item">Breadcrumb</div>
+                            @foreach ($breadcrumbs as $crumb => $link)
+                                <div class="breadcrumb-item"><a
+                                        @if ($link) href="{{$link}}" @endif>{{ $crumb }}</a></div>
+                            @endforeach
                         </div>
                     </div>
 
