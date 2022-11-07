@@ -65,7 +65,7 @@ class UserController extends Controller
      */
     public function update($id)
     {
-        $this->serve(UpdateUserFeature::class, ['id' => $id]);
+        return $this->serve(UpdateUserFeature::class, ['id' => $id]);
     }
 
     /**

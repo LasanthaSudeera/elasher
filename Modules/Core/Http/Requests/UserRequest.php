@@ -21,7 +21,7 @@ class UserRequest extends FormRequest
             'username' => ['required', Rule::unique('users', 'username')->ignore($this->get('id'))],
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->get('id'))],
             'password' => ['nullable', 'confirmed', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
-            'old_password' => ['required_with:password', 'current_password']
+            'old_password' => ['nullable','required_with:password', 'current_password']
         ];
     }
 

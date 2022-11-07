@@ -1,6 +1,17 @@
 @extends('core::layouts.master')
 
 @section('content')
+    @if (session()->has('successMessage'))
+        <div class="alert alert-success alert-dismissible show fade">
+            <div class="alert-body">
+                <button class="close" data-dismiss="alert">
+                    <span>×</span>
+                </button>
+                {{ session()->get('successMessage') }}
+            </div>
+        </div>
+    @endif
+
     <h2 class="section-title">
         Hi, {{ auth()->user()->first_name }}!</h2>
     <p class="section-lead">
