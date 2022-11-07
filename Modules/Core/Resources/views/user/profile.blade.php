@@ -1,7 +1,7 @@
 @extends('core::layouts.master')
 
 @section('content')
-    <h2 class="section-title">Hi, {{auth()->user()->first_name}}!</h2>
+    <h2 class="section-title">Hi, {{ auth()->user()->first_name }}!</h2>
     <p class="section-lead">
         Change information about yourself on this page.
     </p>
@@ -23,7 +23,8 @@
                     </div>
                 </div>
                 <div class="profile-widget-description">
-                    <div class="profile-widget-name">{{auth()->user()->first_name}}<div class="text-muted d-inline font-weight-normal">
+                    <div class="profile-widget-name">{{ auth()->user()->first_name }}<div
+                            class="text-muted d-inline font-weight-normal">
                             <div class="slash"></div> Permission Role
                         </div>
                     </div>
@@ -45,23 +46,39 @@
                         <div class="row">
                             <div class="form-group col-md-6 col-12">
                                 <label>First Name</label>
-                                <input type="text" class="form-control" value="Ujang" required="">
+                                <input id="first_name" name="first_name" type="text" class="form-control"
+                                    value="{{ old('first_name') ? old('first_name') : auth()->user()->first_name }}"
+                                    required="true">
                                 <div class="invalid-feedback">
                                     Please fill in the first name
                                 </div>
                             </div>
+
                             <div class="form-group col-md-6 col-12">
                                 <label>Last Name</label>
-                                <input type="text" class="form-control" value="Maman" required="">
+                                <input id="last_name" name="last_name" type="text" class="form-control"
+                                    value="{{ old('last_name') ? old('last_name') : auth()->user()->last_name }}">
                                 <div class="invalid-feedback">
                                     Please fill in the last name
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-8 col-12">
+                                <label>Username</label>
+                                <input id="username" name="username" type="text" class="form-control"
+                                    value="{{ old('username') ? old('username') : auth()->user()->username }}">
+                                <div class="invalid-feedback">
+                                    Please fill in the username
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-10 col-12">
                                 <label>Email</label>
-                                <input type="email" class="form-control" value="ujang@maman.com" required="">
+                                <input id="email" name="email" type="text" class="form-control"
+                                    value="{{ old('email') ? old('email') : auth()->user()->email }}">
                                 <div class="invalid-feedback">
                                     Please fill in the email
                                 </div>
