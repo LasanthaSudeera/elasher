@@ -11,6 +11,15 @@
 |
 */
 
-Route::prefix('core')->group(function() {
-    Route::get('/', 'CoreController@index');
+use Illuminate\Support\Facades\Route;
+use Modules\Core\Http\Controllers\UserController;
+
+Route::prefix('core')->group(function () {
+    Route::get('/', 'CoreController@index')->name('core.index');
+    Route::get('/show', 'CoreController@show')->name('core.show');
+});
+
+Route::resource('user', UserController::class)->only(['update']);
+Route::prefix('user')->group(function () {
+    Route::get('my-profile', [UserController::class, 'myProfile'])->name('user.profile');
 });

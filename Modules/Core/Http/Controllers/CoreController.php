@@ -2,9 +2,9 @@
 
 namespace Modules\Core\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use Lucid\Units\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Illuminate\Contracts\Support\Renderable;
 
 class CoreController extends Controller
 {
@@ -14,7 +14,14 @@ class CoreController extends Controller
      */
     public function index()
     {
-        return view('core::index');
+        $breadCrumbs = [
+            'Home' => route('home'),
+            'Test' => null
+        ];
+        return view('core::index')->with([
+            'pageName' => 'Core Index',
+            'breadcrumbs' => $breadCrumbs
+        ]);
     }
 
     /**
@@ -41,9 +48,16 @@ class CoreController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show()
     {
-        return view('core::show');
+        $breadCrumbs = [
+            'Home' => route('home'),
+            'Test' => null
+        ];
+        return view('core::index')->with([
+            'pageName' => 'Core Show',
+            'breadcrumbs' => $breadCrumbs
+        ]);
     }
 
     /**
