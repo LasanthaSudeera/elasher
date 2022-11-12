@@ -13,14 +13,12 @@ class RedirectBackWithMessageSuccess extends Job
      * @return void
      */
     public function __construct(
-
         /**
          * User Id
          *
          * @var string
          */
         public string $message
-
     ) {
     }
 

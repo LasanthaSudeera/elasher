@@ -7,6 +7,7 @@
     <file>resources</file>
     <file>routes</file>
     <file>tests</file>
+    <file>Modules</file>
 
     <exclude-pattern>*/database/*</exclude-pattern>
     <exclude-pattern>*/cache/*</exclude-pattern>

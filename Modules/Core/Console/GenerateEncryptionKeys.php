@@ -43,7 +43,6 @@ class GenerateEncryptionKeys extends Command
     {
 
         if ($this->confirm('You are about to generate a security key, if you override or lose this key, your servers data will be inaccessible. Are you sure?')) {
-
             $keyPairs = [
                 'SERVER_KEY' => null,
                 'SERVER_NONCE' => null
@@ -56,7 +55,6 @@ class GenerateEncryptionKeys extends Command
             $keyPairs['SERVER_NONCE'] = $nonce;
 
             $this->saveArrayToEnv($keyPairs);
-
         }
 
 
@@ -104,6 +102,5 @@ class GenerateEncryptionKeys extends Command
         fclose($fp);
 
         $this->info('The keys was generated successfully!');
-
     }
 }

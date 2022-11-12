@@ -13,7 +13,7 @@ class EncryptionAndDecryptionTest extends TestCase
     private string $message = "This is a secret message to encode";
 
     // @test */
-    public function test_ensure_data_can_be_encrypted()
+    public function testEnsureDataCanBeEncrypted()
     {
         $key = base64_decode(config('core.server_key'));
         $nonce = base64_decode(config('core.server_nonce'));
@@ -27,7 +27,7 @@ class EncryptionAndDecryptionTest extends TestCase
     }
 
     // @test */
-    public function test_ensure_data_can_be_decrypted()
+    public function testEnsureDataCanBeDecrypted()
     {
         $key = base64_decode(config('core.server_key'));
         $nonce = base64_decode(config('core.server_nonce'));
@@ -37,6 +37,5 @@ class EncryptionAndDecryptionTest extends TestCase
 
         $decryptJob = new DecryptStringJob($base64EncodedEncryptedText);
         $this->assertEquals($this->message, $decryptJob->handle());
-
     }
 }

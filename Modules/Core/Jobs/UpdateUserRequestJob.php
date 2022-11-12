@@ -19,14 +19,12 @@ class UpdateUserRequestJob extends Job
          * @var array
          */
         public array $input,
-
         /**
          * User Id
          *
          * @var string
          */
         public string $userId
-
     ) {
     }
 
