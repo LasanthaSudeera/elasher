@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use Modules\Core\Http\Controllers\CoreController;
+use Modules\Core\Http\Controllers\RoleController;
 
 return [
     [
@@ -26,13 +27,13 @@ return [
         ]
     ],
     [
-        'menu_header' => 'Testing Bank Page',
+        'menu_header' => 'Core Settings',
         'menu' => [
             [
-                'name' => 'Testing Blank Page',
+                'name' => 'Roles and permission',
                 'icon_class' => 'far fa-square',
-                'url' => 'home',
-                'action' => [HomeController::class, 'index']
+                'url' => 'role.index',
+                'action' => [RoleController::class, 'index']
             ],
             [
                 'name' => 'Core Testing Page',
