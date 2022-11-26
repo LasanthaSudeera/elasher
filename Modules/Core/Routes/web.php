@@ -25,4 +25,4 @@ Route::prefix('user')->group(function () {
     Route::get('my-profile', [UserController::class, 'myProfile'])->name('user.profile');
 });
 
-Route::resource('role', RoleController::class)->only(['index']);
+Route::resource('role', RoleController::class)->only(['index', 'show']);

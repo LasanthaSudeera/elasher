@@ -50,7 +50,14 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        return view('core::show');
+        $pageName = 'Role Management';
+        $breadcrumbs = [
+            'Syetem Roles' => null
+        ];
+        return view('core::role.show')->with([
+            'pageName' => $pageName,
+            'breadcrumbs' => $breadcrumbs
+        ]);
     }
 
     /**
